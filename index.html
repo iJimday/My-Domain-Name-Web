@@ -51,14 +51,13 @@
 </head>
 <body>
 	<script src="static/js/translate.js">
+		translate.language.translateLanguagesRange = ['chinese_simplified'];//只翻译简体中文
+		translate.nomenclature.append('chinese_simplified','english',`
+			小戴米铺=Jimday's Domains
+			国际化=GuoJiHua
+		`);
+		translate.execute();//进行翻译 
 	</script>
-	<script>
-translate.language.setLocal('chinese_simplified'); //设置本地语种（当前网页的语种）。如果不设置，默认自动识别当前网页显示文字的语种。 可填写如 'english'、'chinese_simplified' 等，具体参见文档下方关于此的说明。
-translate.service.use('client.edge'); //设置机器翻译服务通道，直接客户端本身，不依赖服务端 。相关说明参考 http://translate.zvo.cn/43086.html
-translate.listener.start(); //开启页面元素动态监控，js改变的内容也会被翻译 http://translate.zvo.cn/4067.html
-translate.request.listener.start(); //对ajax请求进行监控，以进行对其翻译  http://translate.zvo.cn/4086.html
-translate.execute();//进行翻译 
-</script>
     <div id="notification" class="notification">
         <span class="notification-text">🔥 限时优惠：高价值域名5-8折出手！</span>
         <button class="notification-close">&times;</button>
@@ -261,6 +260,7 @@ translate.execute();//进行翻译
 				<a class="ignore" href="javascript:translate.changeLanguage('chinese_simplified');">简体中文</a> | 
 				<a class="ignore" href="javascript:translate.changeLanguage('chinese_traditional');">繁體中文</a>
 				<button onclick="window.translate.changeLanguage('english');">切换英文</button>
+				<button onclick="window.translate.changeLanguage('chinese_simplified');">切换中文</button>
 			</p>
 			</div>
         </div>
