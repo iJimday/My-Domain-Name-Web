@@ -18,8 +18,6 @@
     <link rel="canonical" href="http://www.furls.cn">
     <link rel="icon" type="image/svg+xml" href="img/logo.svg">
     <link rel="stylesheet" href="static/css/style.css">
-	<link rel="stylesheet" href="static/css/fontello.css">
-	<link rel="stylesheet" href="static/css/style-MIUU.TOP.css">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- 结构化数据 -->
     <script type="application/ld+json">
@@ -52,16 +50,6 @@
     </script>
 </head>
 <body>
-	<div class="container1">
-	<!-- 控制栏 -->
-	<div class="control-bar">
-		<i class="control-btn fas icon-language" id="langToggle"></i>
-		<i class="control-btn fas icon-sun" id="themeToggle"></i>
-	</div>
-	
-	<!-- 返回顶部 -->
-	<div class="back-to-top"><i class="fas icon-up"></i></div>
-	</div>
     <div id="notification" class="notification">
         <span class="notification-text">🔥 限时优惠：高价值域名5-8折出手！</span>
         <button class="notification-close">&times;</button>
@@ -260,6 +248,7 @@
     </footer>
     <script src="static/js/script.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="22e306ec-08f8-4a81-a92f-ee039bbde5c8"></script>
+	<script src="/static/js/translate.js"></script>
     <script>
         // 加载 Bing 每日图片并应用背景
         (function() {
@@ -282,30 +271,4 @@
             };
             img.src = imageUrl;
         })();
-		
-		// 返回顶部按钮
-		const backToTop = document.querySelector('.back-to-top');
-		window.addEventListener('scroll', () => {
-		  const show = window.scrollY > 100;
-		  backToTop.style.opacity = show ? 1 : 0;
-		  backToTop.style.visibility = show ? 'visible' : 'hidden';
-		});
-		backToTop.addEventListener('click', () => {
-		  window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
-
-		// 初始化
-		document.documentElement.setAttribute('data-theme',
-		  localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-		);
-		themeToggle.classList.add(
-		  document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-moon' : 'fa-sun'
-		);
-		setLanguage(localStorage.getItem('lang') || currentLang);
-
-		// 事件监听
-		themeToggle.addEventListener('click', toggleTheme);
-		document.getElementById('langToggle').addEventListener('click', () => {
-		setLanguage(currentLang === 'zh' ? 'en' : 'zh');
-		});
-    </script>
+	</script>
