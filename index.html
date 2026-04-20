@@ -51,6 +51,10 @@
 </head>
 <body>
 	<script src="static/js/translate.js"></script>
+		<script>
+			translate.language.translateLanguagesRange = ['chinese_simplified'];//只翻译简体中文
+			translate.execute(); //执行翻译初始化操作，显示出select语言选择
+		</script>
     <div id="notification" class="notification">
         <span class="notification-text">🔥 限时优惠：高价值域名5-8折出手！</span>
         <button class="notification-close">&times;</button>
@@ -247,7 +251,8 @@
 			<div>
             <p>&copy; 2026 Jimday.cn All Rights Reserved.&nbsp;按钮切换语言:
 				<a class="ignore" href="javascript:translate.changeLanguage('english');">English</a> | 
-				<a class="ignore" href="javascript:translate.changeLanguage('chinese_simplified');">简体中文</a>
+				<a class="ignore" href="javascript:translate.changeLanguage('chinese_simplified');">简体中文</a> | 
+				<a class="ignore" href="javascript:translate.changeLanguage('chinese_traditional');">繁體中文</a>
 			</p>
 			</div>
         </div>
