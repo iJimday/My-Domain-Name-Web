@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="🌽小戴米铺 - 精选优质域名售卖平台，提供com、de、cool、win、xyz等多种域名，价格实惠，品质保证，买卖精选域名就来玉米。">
-    <meta name="keywords" content="域名,域名售卖,精选域名,yumi.sale,域名交易,双拼域名,品牌域名,com域名,de域名">
+    <meta name="keywords" content="域名,域名售卖,精选域名,furls.cn,jimday.cn,域名交易,双拼域名,品牌域名,com域名,de域名">
     <meta name="author" content="小戴米铺">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta property="og:title" content="小戴米铺 - 高价值域名 8 折出手！精选优质域名售卖平台">
     <meta property="og:description" content="小戴米铺专业域名售卖平台，提供精选优质域名，价格透明，品质保证。包含com、de、cool、win、xyz等多种域名类型。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://www.furls.cn">
+	<meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="小戴米铺 - 精选优质域名售卖平台">
     <meta name="twitter:description" content="小戴米铺 - 买卖精选域名，品质保证，优惠多多。">
@@ -30,7 +31,7 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "Customer Service",
-            "email": "ijimday@gmail.com"
+            "email": "iJimday@gmail.com"
         }
     }
     </script>
@@ -62,57 +63,56 @@
 			含义: =Meaning: 
 		`);
 		translate.ignore.text.push('中文'); //翻译时忽略指定的文字不翻译
-		translate.ignore.text.push('English'); 
-		
+		translate.ignore.text.push('English'); //翻译时忽略指定的文字不翻译
 		translate.progress.style=`
-/* CSS部分 */
-    /* 灰色水平加载动画 */
-    .translate_api_in_progress {
-      position: relative;
-      overflow: hidden; /* 隐藏超出部分的动画 */
-    }
-    /* 蒙版层 */
-    .translate_api_in_progress::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 1); /* 半透明白色遮罩 */
-      z-index: 2;
-    }
-    /* 水平加载条动画 */
-    .translate_api_in_progress::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height:100%; /* 细线高度 */
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        #e8e8e8 25%,  /* 浅灰色 */
-        #d0d0d0 50%,  /* 中灰色 */
-        #e8e8e8 75%,  /* 浅灰色 */
-        transparent 100%
-      );
-      background-size: 200% 100%;
-      animation: translate_api_in_progress_horizontal-loader 3.5s linear infinite;
-      z-index: 3;
-      transform: translateY(-50%);
-    }
-    @keyframes translate_api_in_progress_horizontal-loader {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
-    }
-`;
-translate.progress.api.startUITip();
+		/* CSS部分 */
+			/* 灰色水平加载动画 */
+			.translate_api_in_progress {
+			position: relative;
+			overflow: hidden; /* 隐藏超出部分的动画 */
+			}
+			/* 蒙版层 */
+			.translate_api_in_progress::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(255, 255, 255, 1); /* 半透明白色遮罩 */
+			z-index: 2;
+			}
+			/* 水平加载条动画 */
+			.translate_api_in_progress::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			height:100%; /* 细线高度 */
+			background: linear-gradient(
+				90deg,
+				transparent 0%,
+				#e8e8e8 25%,  /* 浅灰色 */
+				#d0d0d0 50%,  /* 中灰色 */
+				#e8e8e8 75%,  /* 浅灰色 */
+				transparent 100%
+			);
+			background-size: 200% 100%;
+			animation: translate_api_in_progress_horizontal-loader 3.5s linear infinite;
+			z-index: 3;
+			transform: translateY(-50%);
+			}
+			@keyframes translate_api_in_progress_horizontal-loader {
+			0% {
+				background-position: 200% 0;
+			}
+			100% {
+				background-position: -200% 0;
+			}
+			}
+		`;
+		translate.progress.api.startUITip();//启用翻译中的遮罩层
 
 		translate.language.setUrlParamControl('lang');//根据URL传参控制以何种语种显示
 		translate.language.clearCacheLanguage();//清除历史翻译语种的缓存
@@ -126,8 +126,8 @@ translate.progress.api.startUITip();
         <div class="header-overlay"></div>
         <div class="container" style="position: relative; z-index: 1;">
             <h1>🌽小戴米铺</h1>
-            <p>精选域名，为您的事业加码</p>
-            <p class="header-contact"> 请联系我：<span id="header-email" class="email-link">ijimday@gmail.com</span></p>
+            <p>精选好域名，价格透明；支持担保交易与快速过户</p>
+            <p class="header-contact"> 请联系我：<span id="header-email" class="email-link">iJimday@gmail.com</span></p>
         </div>
     </header>
     <div class="filter-bar">
@@ -304,7 +304,7 @@ translate.progress.api.startUITip();
     <footer>
         <div class="container">
             <p>对某个域名感兴趣？</p>
-            <p>请通过邮件联系我们: <span id="email-text" class="email-link">ijimday@gmail.com</span></p>
+            <p>请通过邮件联系我们: <span id="email-text" class="email-link">iJimday@gmail.com</span></p>
             <div class="links">
                 <span>友情链接:</span>
 				<a title="Jimday" href="http://www.Jimday.cn/" target="_blank">Jimday</a>
