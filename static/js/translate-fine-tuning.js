@@ -1,4 +1,4 @@
-		translate.language.setUrlParamControl('#');//根据URL传参控制以何种语种显示
+		translate.language.setUrlParamControl('lang');//根据URL传参控制以何种语种显示
 		translate.selectLanguageTag.show = false //设置不显示语言选择的select下拉框
 		translate.language.setLocal('chinese_simplified'); //设置本地语种为简体中文
 		translate.language.translateLanguagesRange = ['chinese_simplified'];//只翻译简体中文
@@ -41,6 +41,6 @@
 			联系我们，告知想购买的域名。您可以附上预算或出价。确认价格后，可选择站内 Push、转移码 (Auth Code) 或第三方平台/担保交易。=and let us know which domain you're interested in. You can provide your budget or make an offer. After confirming the price, you can choose direct push transfer, transfer code (Auth Code), or third-party platform/escrow service.
 			站内 Push (同注册商) 通常几分钟完成。转移码转入其他注册商通常需 5-7 天，取决于目标注册商的处理速度。=Direct push transfer (same registrar) typically completes in minutes. Transfer via Auth Code to another registrar usually takes 5-7 days, depending on the receiving registrar's processing time.
 			妥的。优先采用第三方平台/担保交易 (阿里云 等) 确保安全。支持支付宝、微信或平台指定支付方式。=Absolutely. We prioritize using third-party platforms and escrow services (Aliyun etc.) to ensure safety. We support Alipay, WeChat, and platform-specific payment methods.
-		`);
+		`); //自定义翻译术语
 		translate.ignore.text.push('中文'); //翻译时忽略指定的文字不翻译
 		translate.ignore.text.push('English'); //翻译时忽略指定的文字不翻译
