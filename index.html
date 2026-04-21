@@ -78,56 +78,6 @@
 		`);
 		translate.ignore.text.push('中文'); //翻译时忽略指定的文字不翻译
 		translate.ignore.text.push('English'); //翻译时忽略指定的文字不翻译
-		
-		translate.progress.style=`
-		/* CSS部分 */
-		/* 灰色水平加载动画 */
-		.translate_api_in_progress {
-		position: relative;
-		overflow: hidden; /* 隐藏超出部分的动画 */
-		}
-		/* 蒙版层 */
-		.translate_api_in_progress::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(255, 255, 255, 1); /* 半透明白色遮罩 */
-		z-index: 2;
-		}
-		/* 水平加载条动画 */
-		.translate_api_in_progress::before {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 0;
-		width: 100%;
-		height:100%; /* 细线高度 */
-		background: linear-gradient(
-			90deg,
-			transparent 0%,
-			#e8e8e8 25%,  /* 浅灰色 */
-			#d0d0d0 50%,  /* 中灰色 */
-			#e8e8e8 75%,  /* 浅灰色 */
-			transparent 100%
-		);
-		background-size: 200% 100%;
-		animation: translate_api_in_progress_horizontal-loader 3.5s linear infinite;
-		z-index: 3;
-		transform: translateY(-50%);
-		}
-		@keyframes translate_api_in_progress_horizontal-loader {
-		0% {
-			background-position: 200% 0;
-		}
-		100% {
-			background-position: -200% 0;
-			}
-		}
-		`;
-		translate.progress.api.startUITip();//启用翻译中的遮罩层
 		translate.language.clearCacheLanguage();//清除历史翻译语种的缓存
 	</script>
 </head>
@@ -138,7 +88,7 @@
     </div>
     <header id="header">
         <div class="header-overlay"></div>
-		<div class="language-switcher"><a href="#chinese" class="lang-btn active" title="中文">中文</a><a href="#english" class="lang-btn " title="English">English</a></div>
+		<div class="language-switcher"><a href="javascript:translate.changeLanguage('chinese_simplified');" class="lang-btn active" title="中文">中文</a><a href="javascript:translate.changeLanguage('english');" class="lang-btn " title="English">English</a></div>
         <div class="container" style="position: relative; z-index: 1;">
             <h1>🌽小戴米铺</h1>
             <p>精选好域名，价格透明；支持担保交易与快速过户</p>
