@@ -127,7 +127,6 @@
 		translate.progress.api.startUITip();//启用翻译中的遮罩层
 		translate.language.setUrlParamControl('lang');//根据URL传参控制以何种语种显示
 		translate.language.clearCacheLanguage();//清除历史翻译语种的缓存
-		translate.execute();//进行翻译 
 	</script>
     <div id="notification" class="notification">
         <span class="notification-text">🔥 限时优惠：高价值域名5-8折出手！</span>
@@ -337,6 +336,9 @@
 			</div>
         </div>
     </footer>
+	<script>
+		translate.execute(); //dom加载完后，进行translate.js 触发翻译的执行 //进行翻译
+	</script>
     <script src="static/js/script.js"></script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="22e306ec-08f8-4a81-a92f-ee039bbde5c8"></script>
     <script>
