@@ -14,8 +14,8 @@ var translate = {
 	 * 格式：major.minor.patch.date
 	 */
 	// AUTO_VERSION_START
-	version: '4.0.0.20260210',
-
+	version: '4.0.3.20260402',
+	
 	/*js translate.config start*/
 	/*
 		用于当前整个 translate.js 配置参数（整形、布尔值、字符串等参数，不包括function参数） 的导出及导入。
@@ -179,7 +179,7 @@ var translate = {
 			data.language.urlParamControl.name = translate.language.setUrlParamControl_name;
 			data.language.translateLocal = translate.language.translateLocal;
 			data.images = translate.images.queues;
-			data.nomenclature = translate.images.queues;
+			data.nomenclature = translate.nomenclature.data;
 			data.listener.use = translate.listener.use;
 			data.ignore.text = translate.ignore.text;
 			data.ignore.textRegex = translate.ignore.textRegex;
@@ -221,38 +221,59 @@ var translate = {
 		*/
 		set: function(data){
 			//console.log(data);
+			if(typeof(data) !== 'object' || data === null){
+				data = {};
+			}
+
+			var language = (typeof(data.language) === 'object' && data.language !== null) ? data.language : {};
+			var languageSelect = (typeof(language.select) === 'object' && language.select !== null) ? language.select : {};
+			var languageUrlParamControl = (typeof(language.urlParamControl) === 'object' && language.urlParamControl !== null) ? language.urlParamControl : {};
+			var listener = (typeof(data.listener) === 'object' && data.listener !== null) ? data.listener : {};
+			var ignore = (typeof(data.ignore) === 'object' && data.ignore !== null) ? data.ignore : {};
+			var whole = (typeof(data.whole) === 'object' && data.whole !== null) ? data.whole : {};
+			var selectionTranslate = (typeof(data.selectionTranslate) === 'object' && data.selectionTranslate !== null) ? data.selectionTranslate : {};
+			var request = (typeof(data.request) === 'object' && data.request !== null) ? data.request : {};
+			var requestApi = (typeof(request.api) === 'object' && request.api !== null) ? request.api : {};
+			var requestListener = (typeof(request.listener) === 'object' && request.listener !== null) ? request.listener : {};
+			var element = (typeof(data.element) === 'object' && data.element !== null) ? data.element : {};
+			var progress = (typeof(data.progress) === 'object' && data.progress !== null) ? data.progress : {};
+			var progressApi = (typeof(progress.api) === 'object' && progress.api !== null) ? progress.api : {};
+			var network = (typeof(data.network) === 'object' && data.network !== null) ? data.network : {};
+			var visual = (typeof(data.visual) === 'object' && data.visual !== null) ? data.visual : {};
+			var visualWebPageLoadTranslateBeforeHiddenText = (typeof(visual.webPageLoadTranslateBeforeHiddenText) === 'object' && visual.webPageLoadTranslateBeforeHiddenText !== null) ? visual.webPageLoadTranslateBeforeHiddenText : {};
+
 			if(typeof(data.documents) === 'object'){
 				translate.setDocuments(data.documents);
 			}
-			if(typeof(data.language.select.show) === 'boolean'){
-				translate.selectLanguageTag.show = data.language.select.show;
+			if(typeof(languageSelect.show) === 'boolean'){
+				translate.selectLanguageTag.show = languageSelect.show;
 			}
-			if(typeof(data.language.select.languages) === 'string' && data.language.select.languages.trim().length>0){
-				translate.selectLanguageTag.languages = data.language.select.languages;
+			if(typeof(languageSelect.languages) === 'string' && languageSelect.languages.trim().length>0){
+				translate.selectLanguageTag.languages = languageSelect.languages;
 			}
-			if(typeof(data.language.select.documentId) === 'string' && data.language.select.documentId.trim().length>0){
-				translate.selectLanguageTag.documentId = data.language.select.documentId;
+			if(typeof(languageSelect.documentId) === 'string' && languageSelect.documentId.trim().length>0){
+				translate.selectLanguageTag.documentId = languageSelect.documentId;
 			}
-			if(typeof(data.language.local) === 'string' && data.language.local.trim().length>0){
-				translate.language.setLocal(data.language.local);
+			if(typeof(language.local) === 'string' && language.local.trim().length>0){
+				translate.language.setLocal(language.local);
 			}
-			if(typeof(data.language.defaultTo) === 'string' && data.language.defaultTo.trim().length>0){
-				translate.language.setDefaultTo(data.language.defaultTo);
+			if(typeof(language.defaultTo) === 'string' && language.defaultTo.trim().length>0){
+				translate.language.setDefaultTo(language.defaultTo);
 			}
-			if(typeof(data.language.autoDiscriminateLocalLanguage) === 'boolean' && data.language.autoDiscriminateLocalLanguage === true){
+			if(typeof(language.autoDiscriminateLocalLanguage) === 'boolean' && language.autoDiscriminateLocalLanguage === true){
 				translate.setAutoDiscriminateLocalLanguage();
 			}
-			if(typeof(data.language.range) === 'object' && data.language.range.length > 0){
-				translate.language.translateLanguagesRange = data.language.range;
+			if(typeof(language.range) === 'object' && language.range.length > 0){
+				translate.language.translateLanguagesRange = language.range;
 			}
-			if(typeof(data.language.urlParamControl.use) === 'boolean'){
-				translate.language.setUrlParamControl_use = data.language.urlParamControl.use;
+			if(typeof(languageUrlParamControl.use) === 'boolean'){
+				translate.language.setUrlParamControl_use = languageUrlParamControl.use;
 			}
-			if(typeof(data.language.urlParamControl.name) === 'string' && data.language.urlParamControl.name.trim().toLowerCase() !== 'language'){
-				translate.language.setUrlParamControl(data.language.urlParamControl.name);
+			if(typeof(languageUrlParamControl.name) === 'string' && languageUrlParamControl.name.trim().toLowerCase() !== 'language'){
+				translate.language.setUrlParamControl(languageUrlParamControl.name);
 			}
-			if(typeof(data.language.translateLocal) === 'boolean'){
-				translate.language.translateLocal = data.language.translateLocal;
+			if(typeof(language.translateLocal) === 'boolean'){
+				translate.language.translateLocal = language.translateLocal;
 			}
 			if(typeof(data.images) === 'object'){
 				translate.images.queues = data.images;
@@ -260,97 +281,97 @@ var translate = {
 			if(typeof(data.nomenclature) === 'object'){
 				translate.nomenclature.data = data.nomenclature;
 			}
-			if(typeof(data.listener.use) === 'boolean'){
-				translate.listener.use = data.listener.use;
+			if(typeof(listener.use) === 'boolean'){
+				translate.listener.use = listener.use;
 			}
-			if(typeof(data.ignore.text) === 'object'){
-				translate.ignore.text = data.ignore.text;
+			if(typeof(ignore.text) === 'object'){
+				translate.ignore.text = ignore.text;
 			}
-			if(typeof(data.ignore.textRegex) === 'object'){
-				translate.ignore.textRegex = data.ignore.textRegex;
+			if(typeof(ignore.textRegex) === 'object'){
+				translate.ignore.textRegex = ignore.textRegex;
 			}
-			if(typeof(data.ignore.id) === 'object'){
-				translate.ignore.id = data.ignore.id;
+			if(typeof(ignore.id) === 'object'){
+				translate.ignore.id = ignore.id;
 			}
-			if(typeof(data.ignore.class) === 'object'){
-				translate.ignore.class = data.ignore.class;
+			if(typeof(ignore.class) === 'object'){
+				translate.ignore.class = ignore.class;
 			}
-			if(typeof(data.ignore.tag) === 'object'){
-				translate.ignore.tag = data.ignore.tag;
+			if(typeof(ignore.tag) === 'object'){
+				translate.ignore.tag = ignore.tag;
 			}
 			if(typeof(data.service) === 'string' && data.service.trim().length > 0){
 				translate.service.name = data.service;
 			}
-			if(typeof(data.whole.enableAll) === 'boolean'){
-				translate.listener.use = data.whole.enableAll;
+			if(typeof(whole.enableAll) === 'boolean'){
+				translate.whole.isEnableAll = whole.enableAll;
 			}
-			if(typeof(data.whole.class) === 'object'){
-				translate.whole.class = data.whole.class;
+			if(typeof(whole.class) === 'object'){
+				translate.whole.class = whole.class;
 			}
-			if(typeof(data.whole.tag) === 'object'){
-				translate.whole.tag = data.whole.tag;
+			if(typeof(whole.tag) === 'object'){
+				translate.whole.tag = whole.tag;
 			}
-			if(typeof(data.whole.id) === 'object'){
-				translate.whole.id = data.whole.id;
+			if(typeof(whole.id) === 'object'){
+				translate.whole.id = whole.id;
 			}
-			if(typeof(data.selectionTranslate.use) === 'boolean' && data.selectionTranslate.use === true){
+			if(typeof(selectionTranslate.use) === 'boolean' && selectionTranslate.use === true){
 				if(translate.selectionTranslate.use === false){ //没有启动，才会启动
 					translate.selectionTranslate.start();
 				}
 			}
-			if(typeof(data.request.api.host) === 'object'){
-				translate.request.api.host = data.request.api.host;
+			if(typeof(requestApi.host) === 'object'){
+				translate.request.api.host = requestApi.host;
 			}
-			if(typeof(data.request.api.language) === 'string'){
-				translate.request.api.language = data.request.api.language;
+			if(typeof(requestApi.language) === 'string'){
+				translate.request.api.language = requestApi.language;
 			}
-			if(typeof(data.request.api.ip) === 'string'){
-				translate.request.api.ip = data.request.api.ip;
+			if(typeof(requestApi.ip) === 'string'){
+				translate.request.api.ip = requestApi.ip;
 			}
-			if(typeof(data.request.api.connectTest) === 'string'){
-				translate.request.api.connectTest = data.request.api.connectTest;
+			if(typeof(requestApi.connectTest) === 'string'){
+				translate.request.api.connectTest = requestApi.connectTest;
 			}
-			if(typeof(data.request.api.init) === 'string'){
-				translate.request.api.init = data.request.api.init;
+			if(typeof(requestApi.init) === 'string'){
+				translate.request.api.init = requestApi.init;
 			}
-			if(typeof(data.request.listener.use) === 'boolean'){
-				translate.request.listener.use = data.request.listener.use;
+			if(typeof(requestListener.use) === 'boolean'){
+				translate.request.listener.use = requestListener.use;
 			}
-			if(typeof(data.request.listener.delayExecuteTime) === 'number'){
-				translate.request.listener.delayExecuteTime = data.request.listener.delayExecuteTime;
+			if(typeof(requestListener.delayExecuteTime) === 'number'){
+				translate.request.listener.delayExecuteTime = requestListener.delayExecuteTime;
 			}
-			if(typeof(data.request.listener.minIntervalTime) === 'number'){
-				translate.request.listener.minIntervalTime = data.request.listener.minIntervalTime;
+			if(typeof(requestListener.minIntervalTime) === 'number'){
+				translate.request.listener.minIntervalTime = requestListener.minIntervalTime;
 			}
-			if(typeof(data.request.appendParams) === 'object'){
-				translate.request.appendParams = data.request.appendParams;
+			if(typeof(request.appendParams) === 'object'){
+				translate.request.appendParams = request.appendParams;
 			}
-			if(typeof(data.request.appendHeaders) === 'object'){
-				translate.request.appendHeaders = data.request.appendHeaders;
+			if(typeof(request.appendHeaders) === 'object'){
+				translate.request.appendHeaders = request.appendHeaders;
 			}
-			if(typeof(data.request.waitingExecute) === 'boolean'){
-				translate.waitingExecute.use = data.request.waitingExecute;
+			if(typeof(request.waitingExecute) === 'boolean'){
+				translate.waitingExecute.use = request.waitingExecute;
 			}
-			if(typeof(data.element.tagAttribute) === 'object'){
-				translate.element.tagAttribute = data.element.tagAttribute;
+			if(typeof(element.tagAttribute) === 'object'){
+				translate.element.tagAttribute = element.tagAttribute;
 			}
-			if(typeof(data.progress.api.use) === 'boolean' && data.progress.api.use === true){
+			if(typeof(progressApi.use) === 'boolean' && progressApi.use === true){
 				if(translate.progress.api.use === false){ //没有启动，才会启动
 					translate.progress.api.startUITip();
 				}
 			}
-			if(typeof(data.progress.style) === 'string'){
-				translate.progress.style = data.progress.style;
+			if(typeof(progress.style) === 'string'){
+				translate.progress.style = progress.style;
 			}
-			if(typeof(data.network.rules) === 'object'){
-				translate.network.rules = data.network.rules;
+			if(typeof(network.rules) === 'object'){
+				translate.network.rules = network.rules;
 			}
-			if(typeof(data.network.use) === 'boolean' && data.network.use === true){
+			if(typeof(network.use) === 'boolean' && network.use === true){
 				if(translate.network.isUse === false){ //没有启动，才会启动
 					translate.network.use();
 				}
 			}
-			if(typeof(data.visual.webPageLoadTranslateBeforeHiddenText.use) === 'boolean' && data.visual.webPageLoadTranslateBeforeHiddenText.use === true){
+			if(typeof(visualWebPageLoadTranslateBeforeHiddenText.use) === 'boolean' && visualWebPageLoadTranslateBeforeHiddenText.use === true){
 				if(translate.visual.webPageLoadTranslateBeforeHiddenText_use === false){ //没有启动，才会启动
 					translate.visual.webPageLoadTranslateBeforeHiddenText();
 				}
@@ -714,7 +735,468 @@ var translate = {
 		}
 	},
 	/*js translate.currentLanguage end*/
-	
+
+	/*js translate.postMessage start*/
+	/**
+	 * postMessage 跨域通信模块
+	 * 用于实现跨域 iframe 之间的语言切换同步
+	 * v4.0 新增
+	 */
+	postMessage:{
+		/**
+		 * 消息类型常量
+		 */
+		TYPES: {
+			// 语言切换请求
+			CHANGE_LANGUAGE: 'translate-js-iframe-changeLanguage',
+			// 语言切换完成通知
+			LANGUAGE_CHANGED: 'translate-js-iframe-languageChanged',
+			// 心跳检测
+			PING: 'translate-js-iframe-ping',
+			PONG: 'translate-js-iframe-pong'
+		},
+
+		/**
+		 * 是否已初始化监听器
+		 */
+		initialized: false,
+
+		/**
+		 * 允许接收的跨域消息来源。
+		 * 默认不设置时，允许所有网站来源的消息。
+		 * 如需限制来源，可显式配置允许的 origin 数组。
+		 */
+		allowedOrigins: [],
+
+		/**
+		 * 当语言切换请求来自父页面时，重放 changeLanguage()
+		 * 的过程中不再反向通知父页面，避免形成循环。
+		 */
+		_suppressParentNotify: false,
+
+		/**
+		 * 获取当前页面的 origin。
+		 * @returns {string}
+		 */
+		getCurrentOrigin: function(){
+			if(typeof window.location.origin === 'string' && window.location.origin.length > 0){
+				return window.location.origin;
+			}
+			return this.getOriginFromUrl(window.location.href);
+		},
+
+		/**
+		 * 规范化 origin 字符串。
+		 * @param {string} origin
+		 * @returns {string}
+		 */
+		normalizeOrigin: function(origin){
+			if(typeof origin !== 'string'){
+				return '';
+			}
+			origin = origin.trim();
+			if(origin.length === 0){
+				return '';
+			}
+			if(origin === '*' || origin === 'null'){
+				return origin;
+			}
+			return this.getOriginFromUrl(origin);
+		},
+
+		/**
+		 * 从 URL 中解析 origin。
+		 * @param {string} url
+		 * @returns {string}
+		 */
+		getOriginFromUrl: function(url){
+			if(typeof url !== 'string' || url.trim().length === 0){
+				return '';
+			}
+			try{
+				var link = document.createElement('a');
+				link.href = url;
+				if(typeof link.protocol !== 'string' || link.protocol.length === 0){
+					return '';
+				}
+				if(link.protocol === 'file:'){
+					return 'null';
+				}
+				if(typeof link.host !== 'string' || link.host.length === 0){
+					return '';
+				}
+				return link.protocol + '//' + link.host;
+			}catch(e){
+				return '';
+			}
+		},
+
+		/**
+		 * 为 postMessage() 解析 targetOrigin。
+		 * @param {string} origin
+		 * @returns {string}
+		 */
+		resolveTargetOrigin: function(origin){
+			var normalizedOrigin = this.normalizeOrigin(origin);
+			if(normalizedOrigin === 'null'){
+				return '*';
+			}
+			if(normalizedOrigin.length > 0){
+				return normalizedOrigin;
+			}
+
+			if(Array.isArray(this.allowedOrigins) && this.allowedOrigins.length === 1){
+				normalizedOrigin = this.normalizeOrigin(this.allowedOrigins[0]);
+				if(normalizedOrigin.length > 0 || normalizedOrigin === '*'){
+					return normalizedOrigin;
+				}
+			}
+
+			return '*';
+		},
+
+		/**
+		 * 根据 iframe 的 src 推导其目标 origin。
+		 * @param {HTMLIFrameElement} iframe
+		 * @returns {string}
+		 */
+		getIframeOrigin: function(iframe){
+			if(!iframe){
+				return '';
+			}
+
+			var src = '';
+			if(typeof iframe.getAttribute === 'function'){
+				src = iframe.getAttribute('src');
+			}
+			if((typeof src !== 'string' || src.trim().length === 0) && typeof iframe.src === 'string'){
+				src = iframe.src;
+			}
+
+			var origin = this.getOriginFromUrl(src);
+			if(origin.length > 0){
+				return origin;
+			}
+
+			return this.getCurrentOrigin();
+		},
+
+		/**
+		 * 根据 referrer 获取父页面的 origin。
+		 * @returns {string}
+		 */
+		getParentOrigin: function(){
+			return this.getOriginFromUrl(document.referrer);
+		},
+
+		/**
+		 * 检查接收到的消息来源是否可信。
+		 * @param {string} origin
+		 * @returns {boolean}
+		 */
+		isOriginAllowed: function(origin){
+			var normalizedOrigin = this.normalizeOrigin(origin);
+			if(normalizedOrigin.length === 0){
+				return false;
+			}
+
+			if(!Array.isArray(this.allowedOrigins) || this.allowedOrigins.length === 0){
+				return true;
+			}
+
+			if(normalizedOrigin === this.getCurrentOrigin()){
+				return true;
+			}
+
+			for(var i = 0; i < this.allowedOrigins.length; i++){
+				var allowedOrigin = this.normalizeOrigin(this.allowedOrigins[i]);
+				if(allowedOrigin === '*'){
+					return true;
+				}
+				if(allowedOrigin === normalizedOrigin){
+					return true;
+				}
+			}
+
+			return false;
+		},
+
+		/**
+		 * 当前 changeLanguage 流程是否允许通知父页面。
+		 * @returns {boolean}
+		 */
+		shouldNotifyParent: function(){
+			return this._suppressParentNotify !== true;
+		},
+
+		/**
+		 * 初始化 postMessage 监听器
+		 * 在 translate.init() 中自动调用
+		 */
+		init: function(){
+			if(this.initialized){
+				return;
+			}
+			this.initialized = true;
+
+			var self = this;
+			window.addEventListener('message', function(event){
+				self.handleMessage(event);
+			}, false);
+		},
+
+		/**
+		 * 处理接收到的消息
+		 * @param {MessageEvent} event - 消息事件对象
+		 */
+		handleMessage: function(event){
+			try{
+				// 忽略当前窗口自己发出的消息，避免自发自收。
+				if(event.source === window){
+					return;
+				}
+
+				var data = event.data;
+				if(typeof data !== 'object' || data === null){
+					return;
+				}
+				if(typeof data.type !== 'string'){
+					return;
+				}
+
+				var type = data.type;
+				if(
+					type !== translate.postMessage.TYPES.CHANGE_LANGUAGE &&
+					type !== translate.postMessage.TYPES.LANGUAGE_CHANGED &&
+					type !== translate.postMessage.TYPES.PING &&
+					type !== translate.postMessage.TYPES.PONG
+				){
+					return;
+				}
+
+				if(!translate.postMessage.isOriginAllowed(event.origin)){
+					translate.log('[postMessage] Ignore message from untrusted origin: ' + event.origin);
+					return;
+				}
+
+				if(type === translate.postMessage.TYPES.CHANGE_LANGUAGE){
+					if(typeof data.language === 'string' && data.language.trim().length > 0){
+						translate.postMessage.onReceiveChangeLanguage(data.language, data.fromParent);
+					}
+				}
+
+				if(type === translate.postMessage.TYPES.PING){
+					var source = event.source;
+					if(source){
+						translate.postMessage.send(source, translate.postMessage.TYPES.PONG, {
+							version: translate.version,
+							language: translate.to
+						}, event.origin);
+					}
+				}
+
+				if(type === translate.postMessage.TYPES.PONG){
+					translate.log('[postMessage] Received PONG from iframe, version: ' + data.version + ', language: ' + data.language);
+					if(typeof translate.postMessage._pingCallback === 'function'){
+						var callback = translate.postMessage._pingCallback;
+						translate.postMessage._pingCallback = null;
+						callback(data);
+					}
+				}
+
+				if(type === translate.postMessage.TYPES.LANGUAGE_CHANGED){
+					translate.log('[postMessage] Language changed in iframe: ' + data.language);
+				}
+			}catch(e){
+				translate.log('[postMessage] handleMessage error: ' + e.message);
+			}
+		},
+
+		/**
+		 * 发送消息到目标窗口
+		 * @param {Window} targetWindow - 目标窗口
+		 * @param {string} type - 消息类型
+		 * @param {object} payload - 消息内容
+		 */
+		send: function(targetWindow, type, payload, targetOrigin){
+			if(!targetWindow){
+				return;
+			}
+
+			var message = {
+				type: type,
+				timestamp: Date.now(),
+				version: translate.version
+			};
+
+			// 合并 payload 到 message
+			if(typeof payload === 'object' && payload !== null){
+				for(var key in payload){
+					if(payload.hasOwnProperty(key)){
+						message[key] = payload[key];
+					}
+				}
+			}
+
+			try{
+				targetWindow.postMessage(message, translate.postMessage.resolveTargetOrigin(targetOrigin));
+			}catch(e){
+				translate.log('[postMessage] Send error: ' + e.message);
+			}
+		},
+
+		/**
+		 * 接收到语言切换请求时的处理
+		 * @param {string} language - 目标语言
+		 * @param {boolean} fromParent - 是否来自父页面
+		 */
+		onReceiveChangeLanguage: function(language, fromParent){
+			// 避免重复切换 - 但需要考虑更多情况
+			// 修复：不仅要检查 translate.to，还要检查是否真正处于翻译状态
+			var currentLanguage = translate.to;
+			var hasTranslatedContent = translate.node.data && translate.node.data.size > 0;
+
+			// 如果当前语言等于目标语言，且已经有翻译内容，才跳过
+			// 这样可以处理 iframe 初始加载时 translate.to 可能已经等于目标语言但没有翻译内容的情况
+			if(currentLanguage === language && hasTranslatedContent){
+				translate.log('[postMessage] Already at target language with translated content: ' + language);
+				return;
+			}
+
+			translate.log('[postMessage] Received changeLanguage request: ' + language + ', fromParent: ' + fromParent + ', currentTo: ' + currentLanguage + ', hasTranslated: ' + hasTranslatedContent);
+
+			// 执行语言切换（使用内部方法避免消息循环）
+			translate.postMessage.executeChangeLanguage(language, fromParent);
+		},
+
+		/**
+		 * 执行语言切换（内部方法，不触发 postMessage 向父/子窗口发送）
+		 * @param {string} language - 目标语言
+		 * @param {boolean} fromParent - 是否来自父页面
+		 */
+		executeChangeLanguage: function(language, fromParent){
+			var previousSuppressParentNotify = translate.postMessage._suppressParentNotify;
+			try{
+				if(fromParent === true){
+					translate.postMessage._suppressParentNotify = true;
+				}
+
+				// 复用正常的 changeLanguage 流程，保持 reset 和传播行为一致。
+				translate.changeLanguage(language);
+				translate.log('[postMessage] Language changed to: ' + language);
+
+				if(window.self !== window.top && fromParent === true){
+					translate.postMessage.send(window.parent, translate.postMessage.TYPES.LANGUAGE_CHANGED, {
+						language: language
+					}, translate.postMessage.getParentOrigin());
+				}
+			}catch(e){
+				translate.log('[postMessage] executeChangeLanguage error: ' + e.message);
+			}finally{
+				translate.postMessage._suppressParentNotify = previousSuppressParentNotify;
+			}
+		},
+
+			/**
+			 * 向父页面发送语言切换消息
+		 * @param {string} language - 目标语言
+		 */
+		notifyParent: function(language){
+			if(window.self === window.top){
+				// 当前页面是顶层页面，无需通知父页面
+				return;
+			}
+
+			if(!translate.postMessage.shouldNotifyParent()){
+				return;
+			}
+
+			try{
+				translate.postMessage.send(window.parent, translate.postMessage.TYPES.CHANGE_LANGUAGE, {
+					language: language,
+					fromParent: false,
+					source: 'child'
+				}, translate.postMessage.getParentOrigin());
+				translate.log('[postMessage] Notified parent to change language: ' + language);
+			}catch(e){
+				translate.log('[postMessage] Failed to notify parent: ' + e.message);
+			}
+		},
+
+		/**
+		 * 向所有子 iframe 发送语言切换消息
+		 * @param {string} language - 目标语言
+		 */
+		notifyChildren: function(language){
+			var iframes = document.querySelectorAll('iframe');
+			for(var i = 0; i < iframes.length; i++){
+				var iframe = iframes[i];
+				var iframeWindow = iframe.contentWindow;
+
+				if(!iframeWindow){
+					continue;
+				}
+
+				// 先尝试同域直接访问
+				var sameOrigin = false;
+				try{
+					// 尝试访问 iframe 的 document，如果成功则同域
+					if(iframe.contentDocument){
+						sameOrigin = true;
+					}
+				}catch(e){
+					// 跨域，访问会抛出异常
+					sameOrigin = false;
+				}
+
+				if(sameOrigin){
+					// 同域，尝试直接调用
+					try{
+						if(typeof iframeWindow.translate === 'object' && typeof iframeWindow.translate.version === 'string'){
+							if(iframeWindow.translate.to !== language){
+								// 直接调用 changeLanguage，它会自己处理传播
+								iframeWindow.translate.changeLanguage(language);
+							}
+						}
+					}catch(e){
+						// 异常时使用 postMessage
+						translate.postMessage.send(iframeWindow, translate.postMessage.TYPES.CHANGE_LANGUAGE, {
+							language: language,
+							fromParent: true,
+							source: 'parent'
+						}, translate.postMessage.getIframeOrigin(iframe));
+					}
+				}else{
+					// 跨域，使用 postMessage
+					translate.postMessage.send(iframeWindow, translate.postMessage.TYPES.CHANGE_LANGUAGE, {
+						language: language,
+						fromParent: true,
+						source: 'parent'
+					}, translate.postMessage.getIframeOrigin(iframe));
+				}
+			}
+		},
+
+		/**
+		 * 向指定 iframe 发送心跳检测
+		 * @param {HTMLIFrameElement} iframe - iframe 元素
+		 * @param {function} callback - 回调函数
+		 */
+		ping: function(iframe, callback){
+			if(!iframe || !iframe.contentWindow){
+				return;
+			}
+
+			// 存储回调
+			if(typeof callback === 'function'){
+				this._pingCallback = callback;
+			}
+
+			translate.postMessage.send(iframe.contentWindow, translate.postMessage.TYPES.PING, {}, translate.postMessage.getIframeOrigin(iframe));
+		}
+	},
+	/*js translate.postMessage end*/
+
 	/**
 	 * 切换语言，比如切换为英语、法语
  	 * @param languageName 要切换的语言语种。传入如 english
@@ -792,18 +1274,24 @@ var translate = {
 		*/
 		//检测当前是否处于iframe中，如果当前是在iframe中，有父级页面，也要触发父级进行翻译
 		try{
-			if(window.self !== window.top){
+			if(window.self !== window.top && translate.postMessage.shouldNotifyParent()){
 				if(typeof(window.parent.translate) == 'object' && typeof(window.parent.translate.version) == 'string'){
 					//iframe页面中存在 translate,那么也控制iframe中的进行翻译
 					if(window.parent.translate.to !== languageName){
 						//如果父页面当前的语种不是需要翻译的语种，对其进行翻译
 						window.parent.translate.changeLanguage(languageName);
 					}
+				}else{
+					// 父页面没有 translate 对象（可能跨域无法访问），使用 postMessage
+					translate.postMessage.notifyParent(languageName);
 				}
 			}
 		}catch(e){
-			//增加try，避免异常导致无法用
-			translate.log(e);
+			//增加try，避免异常导致无法用。跨域情况下使用 postMessage
+			if(window.self !== window.top && translate.postMessage.shouldNotifyParent()){
+				translate.postMessage.notifyParent(languageName);
+			}
+			translate.log('changeLanguage parent iframe cross-origin, use postMessage: ' + e.message);
 		}
 		
 		translate.time.log('父级 iframe 触发changeLanguage完成');
@@ -828,25 +1316,60 @@ var translate = {
 			translate.execute(); //翻译
 		
 			//检测是否有iframe中的子页面，如果有，也对子页面下发翻译命令。这个是针对 LayuiAdmin 框架的场景适配，它的主体区域是在 iframe 中的，不能点击切换语言后，只翻译外面的大框，而iframe中的不翻译
-			const iframes = document.querySelectorAll('iframe');
-			for (let i = 0; i < iframes.length; i++) {
-				const iframe = iframes[i];
-				// 获取 iframe 的 window 对象
-				const iframeWindow = iframe.contentWindow; 
-				try{       
-					if(typeof(iframeWindow.translate) == 'object' && typeof(iframeWindow.translate.version) == 'string'){
-						//iframe页面中存在 translate,那么也控制iframe中的进行翻译
-						if(iframeWindow.translate.to != languageName){
-							iframeWindow.translate.to = languageName;
-							iframeWindow.translate.storage.set('to',languageName);	//设置目标翻译语言
-							//iframeWindow.translate.execute();
-							iframeWindow.translate.changeLanguage(languageName);
+			var iframes = document.querySelectorAll('iframe');
+			for (var i = 0; i < iframes.length; i++) {
+				var iframe = iframes[i];
+				var iframeWindow = iframe.contentWindow;
+				if(!iframeWindow){
+					continue;
+				}
+
+				// 判断是否同域
+				var sameOrigin = false;
+				try{
+					// 尝试访问 iframe.contentDocument，如果成功则同域
+					if(iframe.contentDocument){
+						sameOrigin = true;
+					}
+				}catch(e){
+					// 跨域，访问会抛出异常
+					sameOrigin = false;
+				}
+
+				try{
+					if(sameOrigin){
+						// 同域，尝试直接调用
+						if(typeof(iframeWindow.translate) == 'object' && typeof(iframeWindow.translate.version) == 'string'){
+							//iframe页面中存在 translate,那么也控制iframe中的进行翻译
+							// 修复：不仅要检查 translate.to，还要检查是否真正处于翻译状态
+							var iframeTo = iframeWindow.translate.to;
+							var iframeHasTranslated = iframeWindow.translate.node.data && iframeWindow.translate.node.data.size > 0;
+
+							// 只有当 iframe 的语言等于目标语言且已有翻译内容时才跳过
+							if(!(iframeTo === languageName && iframeHasTranslated)){
+								iframeWindow.translate.changeLanguage(languageName);
+							}
+						}
+					}else{
+						// 跨域，使用 postMessage
+						translate.postMessage.send(iframeWindow, translate.postMessage.TYPES.CHANGE_LANGUAGE, {
+							language: languageName,
+							fromParent: true,
+							source: 'parent'
+						}, translate.postMessage.getIframeOrigin(iframe));
+						if(typeof(iframe.src) === 'string'){
+							translate.log('[postMessage] Send changeLanguage to cross-origin iframe, src: ' + iframe.src);
 						}
 					}
 				}catch(e){
-					//增加try，避免异常,比如跨域，中断导致无法用
+					// 异常时，尝试使用 postMessage
+					translate.postMessage.send(iframeWindow, translate.postMessage.TYPES.CHANGE_LANGUAGE, {
+						language: languageName,
+						fromParent: true,
+						source: 'parent'
+					}, translate.postMessage.getIframeOrigin(iframe));
 					if(typeof(iframe.src) === 'string'){
-						translate.log('change sub page iframe exception , iframe src : '+iframe.src);
+						translate.log('change sub page iframe exception (use postMessage fallback), iframe src : '+iframe.src);
 					}
 					translate.log(e);
 				}
@@ -2015,7 +2538,11 @@ var translate = {
 									}
 								}
 								if(addNodeName.length > 0 && translate.ignore.tag.indexOf(addNodeName) == -1){
-									addNodes.push(mutation.addedNodes[ani]);
+									// 使用现有的忽略机制检查节点
+									//var addedNode = mutation.addedNodes[ani];
+									//if(!translate.element.isIgnore(addedNode)){
+										addNodes.push(mutation.addedNodes[ani]);
+									//}
 								}
 							}
 							//addNodes = mutation.addedNodes;
@@ -2471,6 +2998,8 @@ var translate = {
 			二维对象形态，存放执行传入的 docs
 		*/
 		queue:[],
+		//当前队列调度器的 intervalId。 null 表示未启动调度器
+		intervalId:null,
 		/*
 			增加一个翻译任务到翻译队列中
 			docs 同 translate.execute(docs) 的传入参数
@@ -2478,14 +3007,26 @@ var translate = {
 		add:function(docs){
 			//向数组末尾追加
 			translate.waitingExecute.queue.push(docs);
-			//开启一个定时器进行触发
-			let intervalId = setInterval(function() {
+			//调度器已启动，那么只需要入队即可，避免多个 interval 并发竞争同一个队列
+			if(translate.waitingExecute.intervalId !== null){
+				return;
+			}
+			//开启唯一一个定时器进行触发
+			translate.waitingExecute.intervalId = setInterval(function() {
+				if(translate.waitingExecute.queue.length < 1){
+					//队列已空，关闭调度器
+					clearInterval(translate.waitingExecute.intervalId);
+					translate.waitingExecute.intervalId = null;
+					return;
+				}
 				if(translate.state == 0){
-					//清除定时器，结束循环
-					clearInterval(intervalId);
 					var docs = translate.waitingExecute.get();
+					if(docs == null){
+						clearInterval(translate.waitingExecute.intervalId);
+						translate.waitingExecute.intervalId = null;
+						return;
+					}
 					translate.execute(docs);
-					//console.log('stop waitingExecute setInterval');
 				}
 			}, 500);
 		},
@@ -8397,7 +8938,7 @@ var translate = {
 			 */
 			translate:function(path, data, func, abnormalFunc){
 				var textArray = JSON.parse(decodeURIComponent(data.text));
-				let translateTextArray = translate.util.split(textArray, 40000, 900);
+				var translateTextArray = translate.util.split(textArray, 40000, 900);
 
 
 				var appendXhrData = {
@@ -8427,7 +8968,8 @@ var translate = {
 					}
 					*/
 
-					translate.request.send(transUrl, JSON.stringify(translateTextArray[tai]), appendXhrData, function(result){
+					(function(chunkIndex){
+						translate.request.send(transUrl, JSON.stringify(translateTextArray[chunkIndex]), appendXhrData, function(result){
 						var d = {};
 						d.info = 'SUCCESS';
 						d.result = 1;
@@ -8443,22 +8985,8 @@ var translate = {
 						if(translateTextArray.length > 1){
 							//这一次翻译呗拆分了多次请求，那么要进行补全数组，使数组个数能一致
 
-							/*
-
-								注意这里根据数组的长度来判断当前属于第几个数组，
-								有几率会是拆分的数组，其中有两组的长度是一样的，
-								这样的话是有问题的，只不过几率很小，就先这样了
-								但终归还是留了个坑 -- 记录
-
-							*/
-
-							var currentIndex = -1;	//当前翻译请求属于被拆分的第几个的数组下标，从0开始的
-							for(var cri = 0; cri < translateTextArray.length; cri++){
-								if(translateTextArray[cri].length - d.text.length == 0){
-									currentIndex = cri;
-									break;
-								}
-							}
+							//使用当前分片下标，不再根据返回的长度猜测属于哪个分片
+							var currentIndex = chunkIndex;	//当前翻译请求属于被拆分的第几个的数组下标，从0开始的
 
 							//进行对前后进行补齐数组
 							if(currentIndex < 0){
@@ -8480,13 +9008,14 @@ var translate = {
 									d.text.push(null);
 								}
 							}
-							
+						
 						}
 						
 						func(d);
 					}, 'post', true, {
 						'Content-Type':'application/json'
 					}, abnormalFunc, true);
+					})(tai);
 					
 
 				}
@@ -9228,7 +9757,7 @@ var translate = {
 
 			// 筛选需要翻译的文本及其原始索引
   			var apiTranslateText = [];
-			var apiTranslateArray = {};
+			var apiTranslateItems = [];
 			for(var i = 0; i < texts.length; i++){
 				//判断是否在浏览器缓存中出现了
 				var hash = translate.util.hash(texts[i]);
@@ -9240,7 +9769,11 @@ var translate = {
 				}else{
 					translateResultArray[i] = '';
 					apiTranslateText.push(texts[i]);
-					apiTranslateArray[hash] = i;
+					apiTranslateItems.push({
+						index: i,
+						text: texts[i],
+						hash: hash
+					});
 				}
 			}
 			if (apiTranslateText.length == 0) {
@@ -9281,20 +9814,24 @@ var translate = {
 					translate.log('translate text array : '+texts);
 					translate.log('response error info: '+responseData.info);
 					translate.log('=======ERROR END  =======');
-					//return;
+					return;
 				}
 
 				for(var i = 0; i < responseData.text.length; i++){
+					if(typeof(apiTranslateItems[i]) === 'undefined'){
+						continue;
+					}
+
 					//将翻译结果以 key：hash  value翻译结果的形式缓存
-					var hash = translate.util.hash(apiTranslateText[i]);
+					var hash = apiTranslateItems[i].hash;
 					translate.storage.set('hash_'+to+'_'+hash, responseData.text[i]);
 					//如果离线翻译启用了全部提取，那么还要存入离线翻译指定存储
 					if(translate.offline.fullExtract.isUse){
-						translate.offline.fullExtract.set(hash, apiTranslateText[i], data.to, responseData.text[i]);
+						translate.offline.fullExtract.set(hash, apiTranslateItems[i].text, data.to, responseData.text[i]);
 					}
 
 					//进行组合数据到 translateResultArray
-					translateResultArray[apiTranslateArray[hash]] = responseData.text[i];
+					translateResultArray[apiTranslateItems[i].index] = responseData.text[i];
 				}
 				responseData.text = translateResultArray;			
 
@@ -12360,7 +12897,9 @@ var translate = {
 			// 创建定时器，每1分钟执行一次 translate.recycle 进行清理数据存储
 			setInterval(translate.recycle, 60 * 1000);
 		}
-		
+
+		//初始化 postMessage 监听器，用于跨域 iframe 通信
+		translate.postMessage.init();
 	},
 	/*js translate.init end*/
 
