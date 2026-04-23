@@ -31,6 +31,7 @@ translate.nomenclature.append('chinese_simplified', 'english', `
 	域名长度 长→短=Length Long→Short
 	到期时间 近→远=Expiry Near→Far
 	到期时间 远→近=Expiry Far→Near
+	价格合适可售=Reasonable price, can be sold
 	¥=CNY
 	已售出=Sold
 	切换语言=Language
