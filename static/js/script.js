@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             element.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                const email = 'i@yumi.sale';
+                const email = 'ijimday@gmail.com';
                 copyToClipboard(email, element);
             });
         }
