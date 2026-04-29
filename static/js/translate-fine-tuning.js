@@ -1,5 +1,6 @@
 translate.language.setUrlParamControl('lang'); //根据URL传参控制以何种语种显示
 translate.selectLanguageTag.show = false //设置不显示语言选择的select下拉框
+translate.service.use('client.edge'); //设置使用的翻译服务
 translate.language.setLocal('chinese_simplified'); //设置本地语种为简体中文
 translate.language.translateLanguagesRange = ['chinese_simplified']; //只翻译简体中文
 translate.setAutoDiscriminateLocalLanguage(); //设置用户第一次用时，自动识别其所使用的语种进行切换
