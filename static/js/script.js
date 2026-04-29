@@ -132,22 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setupEmailCopy(emailText);
     setupEmailCopy(headerEmail);
-	
-	// 地址复制功能
-    const addressText = document.getElementById('address-text');
-    
-    function setupaddressCopy(element) {
-        if (element) {
-            element.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const address = 'Jimday.cn';
-                copyToClipboard(address, element);
-            });
-        }
-    }
-    
-    setupaddressCopy(addressText);
 
     // 统一复制功能，优先使用备用方案以兼容 Safari
     function copyToClipboard(text, element) {
