@@ -2,8 +2,8 @@
   <!-- 背景透明 -->
   <rect width="200" height="200" fill="transparent"/>
   
-  <!-- 玉米emoji图标 - 使用外层group确保精确居中 -->
+  <!-- emoji图标 - 使用外层group确保精确居中 -->
   <g transform="translate(100, 100)">
-    <text x="0" y="0" font-size="160" font-family="apple color emoji, segoe ui emoji, noto color emoji, sans-serif" text-anchor="middle" dominant-baseline="central" alignment-baseline="central" style="paint-order: stroke;">🌽</text>
+    <text x="0" y="0" font-size="160" font-family="apple color emoji, segoe ui emoji, noto color emoji, sans-serif" text-anchor="middle" dominant-baseline="central" alignment-baseline="central" style="paint-order: stroke;">🥬</text>
   </g>
 </svg>
