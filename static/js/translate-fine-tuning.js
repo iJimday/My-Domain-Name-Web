@@ -45,6 +45,7 @@ translate.nomenclature.append('chinese_simplified', 'english', `
 	站内 Push (同注册商) 通常几分钟完成。转移码转入其他注册商通常需 5-7 天，取决于目标注册商的处理速度。=Direct push transfer (same registrar) typically completes in minutes. Transfer via Auth Code to another registrar usually takes 5-7 days, depending on the receiving registrar's processing time.
 	妥的。优先采用第三方平台/担保交易 (阿里云 等) 确保安全。支持支付宝、微信或平台指定支付方式。=Absolutely. We prioritize using third-party platforms and escrow services (Aliyun etc.) to ensure safety. We support Alipay, WeChat, and platform-specific payment methods.
 	阿戴主页=Jimday.cn
+	小趴菜米市=Little Pacai Domains Shop
 `); //自定义翻译术语
 translate.ignore.text.push('中文'); //翻译时忽略指定的文字不翻译
 translate.ignore.text.push('English'); //翻译时忽略指定的文字不翻译
