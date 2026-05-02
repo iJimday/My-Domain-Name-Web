@@ -154,5 +154,5 @@ User-agent: YouBot
 User-agent: ZanistaBot
 Disallow: /
 
-Sitemap: https://cloudflare.daijianmin.com/sitemap.xml
-Sitemap: https://cloudflare.daijianmin.com/sitemap_baidu.xml
+Sitemap: https://www.pacai.cn/sitemap.xml
+Sitemap: https://www.pacai.cn/sitemap_baidu.xml
