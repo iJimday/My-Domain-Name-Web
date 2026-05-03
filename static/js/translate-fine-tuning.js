@@ -6,10 +6,11 @@ translate.language.translateLanguagesRange = ['chinese_simplified']; //只翻译
 translate.setAutoDiscriminateLocalLanguage(); //设置用户第一次用时，自动识别其所使用的语种进行切换
 translate.visual.webPageLoadTranslateBeforeHiddenText(); //自动隐藏页面文字，避免先显示原文的缺陷
 translate.nomenclature.append('chinese_simplified', 'english', `
-	小趴菜 | 小戴米铺=Jimday's Domains
+	小趴菜=Little Pacai
 	小趴菜 - 小戴米铺=Little Pacai - Jimday's Domains
 	小戴米铺=Jimday's Domains
-	精选好域名，价格透明；支持担保交易与快速过户=Premium domains, transparent pricing. Support escrow transactions and fast transfers.
+	精选好域名，价格透明；=Premium domains, transparent pricing. 
+	支持担保交易与快速过户=Support escrow transactions and fast transfers.
 	请联系我：=Contact me: 
 	含义:=Meaning: 
 	注册商=Registrar
@@ -47,6 +48,7 @@ translate.nomenclature.append('chinese_simplified', 'english', `
 	阿戴主页=Jimday.cn
 	小趴菜米市=Little Pacai Domains Shop
 	阿戴米市=Jimday's Domains Shop
+	米铺=Domains
 `); //自定义翻译术语
 translate.ignore.text.push('中文'); //翻译时忽略指定的文字不翻译
 translate.ignore.text.push('English'); //翻译时忽略指定的文字不翻译

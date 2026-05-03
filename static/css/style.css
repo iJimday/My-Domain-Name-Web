@@ -525,3 +525,18 @@ footer a:hover {
         font-size: 13px;
     }
 }
+
+/* 移动端 br 样式 cloud.tencent.com/developer/article/2287715/ */
+@media screen and (max-width: 736px) {
+	#wrapper {
+		padding: 2rem 1rem;
+	}
+	/*footer p标签自动换行 仅在PC端显示*/
+	.breakPSpan {
+		display: none;
+	}
+	/*仅在移动端执行*/
+	.breakPBr {
+		display: inline-block !important;
+	}
+}
