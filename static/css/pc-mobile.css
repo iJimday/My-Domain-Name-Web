@@ -1,0 +1,27 @@
+/* 默认隐藏所有内容 */
+.pc-content,
+.pad-content,
+.mobile-content {
+	display: none;
+}
+
+/* 电脑端（屏幕宽度 >= 1024px）显示 PC 内容 */
+@media screen and (min-width: 1024px) {
+	.pc-content {
+		display: block;
+	}
+}
+
+/* PAD端（屏幕宽度 769px-1023px）显示 PAD 内容 */
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+	.pad-content {
+		display: block;
+	}
+}
+
+/* 手机端（屏幕宽度 <= 768px）显示手机内容 */
+@media screen and (max-width: 768px) {
+	.mobile-content {
+		display: block;
+	}
+}

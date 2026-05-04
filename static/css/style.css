@@ -540,3 +540,16 @@ footer a:hover {
 		display: inline-block !important;
 	}
 }
+
+/* 隐藏默认三角 chrome Safari*/
+details ::-webkit-details-marker {
+	display: none;
+}
+/*隐藏默认三角 Firefox*/
+details ::-moz-list-bullet {
+	font-size: 0px;
+}
+/*部分老版浏览器需要这样写*/
+summary {
+	list-style: none;
+}
