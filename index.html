@@ -115,7 +115,7 @@
 		</select>
 	</div>
 	<main>
-		<div class="container">
+		<div class="container domain-list-container">
 			<div class="card" data-price="0" data-expiry="2026-10-30" data-suffix="cn">
 				<div class="card-content">
 					<h3>pacai.cn<span class="badge badge-featured">自用</span></h3>
@@ -124,6 +124,7 @@
 					<p><strong>到期时间: </strong><span class="expiry-text">2026-10-30</span></p>
 					<p><strong>状态: </strong>自用中</p>
 					<p class="price">价格: 价格合适可售</p>
+					<a class="buy-btn">查看购买</a>
 				</div>
 			</div>
 			<div class="card" data-price="199999" data-expiry="2027-09-19" data-suffix="com">
@@ -270,6 +271,10 @@
 				</div>
 			</div>
 		</div>
+		<!-- 查看更多按钮 -->
+		<div class="load-more-container">
+			<button class="load-more-btn" id="loadMoreBtn">查看更多</button>
+		</div>
 		<div class="container">
 			<h2 class="sold-title">已售出</h2>
 			<div class="sold-section">
@@ -388,6 +393,8 @@
 	</script><!--translate.js的设置-->
 	<script src="static/js/bing-daily-img.js"></script><!--Bing daily img-->
 	<script src="static/js/0g3yt-.a0ubwc.js" id="_R_" async=""></script>
+	<link rel="stylesheet" href="static/css/load-more.css"><!--查看更多-->
+	<script src="static/js/load-more.js"></script><!--查看更多-->
 	<script src="static/js/tongji.js"></script><!--统计-->
 </body>
 </html>

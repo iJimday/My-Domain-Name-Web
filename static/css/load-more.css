@@ -1,0 +1,27 @@
+/* 查看更多按钮样式 - 与网站风格统一 */
+.load-more-container {
+	text-align: center;
+	margin: 30px 0;
+}
+
+.load-more-btn {
+	background-color: #007BFF;
+	color: #fff;
+	border: none;
+	padding: 12px 30px;
+	border-radius: 8px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.load-more-btn:hover {
+	background-color: #0056b3;
+	transform: translateY(-2px);
+}
+
+/* 默认隐藏超过12个的卡片 */
+.card.hidden-card {
+	display: none;
+}
