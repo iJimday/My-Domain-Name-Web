@@ -526,21 +526,6 @@ footer a:hover {
     }
 }
 
-/* 移动端 br 样式 cloud.tencent.com/developer/article/2287715/ */
-@media screen and (max-width: 736px) {
-	#wrapper {
-		padding: 2rem 1rem;
-	}
-	/*footer p标签自动换行 仅在PC端显示*/
-	.breakPSpan {
-		display: none;
-	}
-	/*仅在移动端执行*/
-	.breakPBr {
-		display: inline-block !important;
-	}
-}
-
 /* 隐藏默认三角 chrome Safari*/
 details ::-webkit-details-marker {
 	display: none;
@@ -552,4 +537,136 @@ details ::-moz-list-bullet {
 /*部分老版浏览器需要这样写*/
 summary {
 	list-style: none;
+}
+
+/* 已售出区域折叠样式 */
+.sold-section details {
+	width: 100%;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	padding: 16px;
+	margin-bottom: 24px;
+}
+
+.sold-section summary {
+	font-weight: 600;
+	cursor: pointer;
+	color: #6b7280;
+}
+
+.sold-section .sold-cards {
+	margin-top: 16px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 16px;
+}
+
+/* 域名长度标签 */
+.length-badge {
+	font-size: 12px;
+	padding: 2px 6px;
+	background: #f3f4f6;
+	color: #4b5563;
+	border-radius: 4px;
+	margin-left: 8px;
+	font-weight: normal;
+}
+
+/* CTA购买按钮 */
+.buy-btn {
+	display: inline-block;
+	margin-top: 12px;
+	padding: 8px 16px;
+	background: #007BFF;
+	color: white !important;
+	border-radius: 6px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.2s;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.buy-btn:hover {
+	background: #0056b3;
+	transform: translateY(-2px);
+}
+
+/* 卡片hover动效 */
+.card:not(.sold) {
+	transition: all 0.3s ease;
+}
+
+.card:not(.sold):hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Toast提示样式 */
+@media screen and (min-width: 769px) {
+	.toast {
+		position: fixed;
+		top: 20px;
+		left: 20px;
+		padding: 12px 24px;
+		background: #10b981;
+		color: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		opacity: 0;
+		transform: translateY(-20px);
+		transition: all 0.3s ease;
+		z-index: 9999;
+	}
+
+	.toast.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.toast {
+		position: fixed;
+		top: 10px;
+		left: 8px;
+		padding: 3px 6px;
+		background: #10b981;
+		color: white;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		opacity: 0;
+		transform: translateY(-20px);
+		transition: all 0.3s ease;
+		z-index: 9999;
+	}
+
+	.toast.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* 改自email-link */
+.url-link {
+	cursor: pointer;
+	color: #ffffff;
+	font-weight: 600;
+	padding: 2px 6px;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+	display: inline-block;
+}
+
+.url-link:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	transform: scale(1.05);
+}
+
+.url-link.copied {
+	color: #ffd700;
+	background-color: rgba(255, 215, 0, 0.2);
+	transform: scale(1);
 }

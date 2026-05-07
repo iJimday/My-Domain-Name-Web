@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	// 邮件复制功能
-	const emailText = document.getElementById('email-text');
+	/*const emailText = document.getElementById('email-text');
 	const headerEmail = document.getElementById('header-email');
 
 	function setupEmailCopy(element) {
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				copyToClipboard(email, element);
 			});
 		}
-	}
+	}*/
 
 	setupEmailCopy(emailText);
 	setupEmailCopy(headerEmail);
@@ -214,4 +214,66 @@ document.addEventListener('DOMContentLoaded', function() {
 			element.classList.remove('copied');
 		}, 3000);
 	}
+});
+
+// 邮箱复制功能增强：添加Toast提示
+document.querySelectorAll('.email-link').forEach(el => {
+	el.addEventListener('click', function() {
+		navigator.clipboard.writeText('iJimday@gmail.com').then(() => {
+			const toast = document.getElementById('toast');
+			toast.classList.add('show');
+			setTimeout(() => toast.classList.remove('show'), 2000);
+		});
+	});
+});
+
+// 价格格式化：千分位
+document.querySelectorAll('.price-text').forEach(el => {
+	const price = parseInt(el.textContent);
+	el.textContent = '¥' + price.toLocaleString();
+});
+
+// 到期时间剩余时间计算
+function getExpiryRemaining(expiryDate) {
+	const now = new Date();
+	const expiry = new Date(expiryDate);
+	const diff = expiry - now;
+
+	const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+	if (days < 30) return `（剩余${days}天）`;
+	if (days < 365) {
+		const months = Math.floor(days / 30);
+		return `（剩余${months}个月）`;
+	}
+	const years = Math.floor(days / 365);
+	const months = Math.floor((days % 365) / 30);
+	return months > 0 ? `（剩余${years}年${months}个月）` : `（剩余${years}年）`;
+}
+
+document.querySelectorAll('.expiry-text').forEach(el => {
+	const expiry = el.textContent;
+	if (expiry && expiry !== '0') {
+		el.textContent += getExpiryRemaining(expiry);
+	}
+});
+
+// 域名长度标签
+document.querySelectorAll('.card:not(.sold) h3').forEach(el => {
+	const domainLink = el.querySelector('a');
+	const domainText = domainLink ? domainLink.textContent.split('.')[0] : el.textContent.split('.')[0];
+	const hasLetter = /[a-zA-Z]/.test(domainText);
+	const hasNumber = /\d/.test(domainText);
+	const length = domainText.length;
+	const badge = document.createElement('span');
+	badge.className = 'length-badge';
+	let badgeText;
+	if (hasLetter && hasNumber) {
+		badgeText = `${length}杂米`;
+	} else if (hasNumber) {
+		badgeText = `${length}数字`;
+	} else {
+		badgeText = `${length}字母`;
+	}
+	badge.textContent = badgeText;
+	el.appendChild(badge);
 });
